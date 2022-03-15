@@ -1,9 +1,15 @@
 from turtle import Turtle
+
 MOVE_DIST = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 
 class Snake:
     """Snake class to initiate the snake"""
+
     def __init__(self):
         self.snake_shape = []
         self.create_snake()
@@ -28,13 +34,17 @@ class Snake:
         self.snake_shape[0].forward(MOVE_DIST)
 
     def up(self):
-        self.head.setheading(90)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
 
     def down(self):
-        self.head.setheading(270)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
 
     def left(self):
-        self.head.setheading(180)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
 
     def right(self):
-        self.head.setheading(0)
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
