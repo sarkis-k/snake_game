@@ -5,7 +5,7 @@ from scoreboard import ScoreBoard
 import time
 
 screen = Screen()
-screen.setup(width=600, height=600)
+screen.setup(width=600, height=610)
 screen.bgcolor("black")
 screen.title("Snake")
 screen.tracer(0)
@@ -31,5 +31,6 @@ while game_is_on:
     # detecting collision with food
     if snake.head.distance(bite) < 15:
         bite.refresh()
+        score.increase_score()
 
 screen.exitonclick()
