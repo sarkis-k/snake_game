@@ -5,6 +5,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
+POSITIONS = [(0,0),(-20,0),(-40,0)]
 
 
 class Snake:
@@ -17,13 +18,8 @@ class Snake:
 
     def create_snake(self):
         """Creates initial length of 3 snake"""
-        for x in range(0, 3):
-            snake_bit = Turtle()
-            snake_bit.color("white")
-            snake_bit.shape("square")
-            snake_bit.penup()
-            snake_bit.goto(-20 * x, 0)
-            self.snake_shape.append(snake_bit)
+        for x in POSITIONS:
+            self.add_bit(x)
 
     def move(self):
         """Move all bits of the snake by the amount """
@@ -48,3 +44,15 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def add_bit(self, position):
+        snake_bit = Turtle()
+        snake_bit.color("white")
+        snake_bit.shape("square")
+        snake_bit.penup()
+        snake_bit.goto(position)
+        self.snake_shape.append(snake_bit)
+
+    def extend(self):
+        # add new bit to snake
+        self.add_bit(self.snake_shape[-1].position())
